@@ -257,10 +257,12 @@
         </div>
       </div>
     </div>
+      </div>
+</section>
     <!--/ Abstract. -->
 
     <!-- Paper video. -->
-    <div class="columns is-centered has-text-centered">
+    <!-- <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
         <h2 class="title is-3">Video</h2>
         <div class="publication-video">
@@ -268,14 +270,13 @@
                   frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
         </div>
       </div>
-    </div>
+    </div> -->
     <!--/ Paper video. -->
-  </div>
-</section>
 
 
-<section class="section">
-  <div class="container is-max-desktop">
+
+<!-- <section class="section">
+  <div class="container is-max-desktop"> -->
 
     <!-- <div class="columns is-centered"> -->
 
@@ -316,12 +317,12 @@
     <!--/ Matting. -->
 
     <!-- Animation. -->
-    <div class="columns is-centered">
+    <!-- <div class="columns is-centered">
       <div class="column is-full-width">
-        <h2 class="title is-3">Animation</h2>
+        <h2 class="title is-3">Animation</h2> -->
 
         <!-- Interpolating. -->
-        <h3 class="title is-4">Interpolating states</h3>
+        <!-- <h3 class="title is-4">Interpolating states</h3>
         <div class="content has-text-justified">
           <p>
             We can also animate the scene by interpolating the deformation latent codes of two input
@@ -351,11 +352,11 @@
             <p class="is-bold">End Frame</p>
           </div>
         </div>
-        <br/>
+        <br/> -->
         <!--/ Interpolating. -->
 
         <!-- Re-rendering. -->
-        <h3 class="title is-4">Re-rendering the input video</h3>
+        <!-- <h3 class="title is-4">Re-rendering the input video</h3>
         <div class="content has-text-justified">
           <p>
             Using <span class="dnerf">Nerfies</span>, you can re-render a video from a novel
@@ -372,16 +373,16 @@
             <source src="./static/videos/replay.mp4"
                     type="video/mp4">
           </video>
-        </div>
+        </div> -->
         <!--/ Re-rendering. -->
 
-      </div>
-    </div>
+      <!-- </div>
+    </div> -->
     <!--/ Animation. -->
 
 
     <!-- Concurrent Work. -->
-    <div class="columns is-centered">
+    <!-- <div class="columns is-centered">
       <div class="column is-full-width">
         <h2 class="title is-3">Related Links</h2>
 
@@ -404,11 +405,170 @@
           </p>
         </div>
       </div>
-    </div>
+    </div> -->
     <!--/ Concurrent Work. -->
 
   <!-- </div> -->
+<!-- </section> -->
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3">Conversion Comparison</h2>
+
+    <div class="content has-text-centered">
+      <p><strong>Target Speaker: name</strong></p>
+      <audio controls>
+        <source src="./static/wav/target_speaker.wav" type="audio/wav">
+        Your browser does not support the audio element.
+      </audio>
+    </div>
+
+    <table class="table is-fullwidth is-striped">
+      <thead>
+        <tr>
+          <th>Source</th>
+          <th>Our Model (RT-VC)</th>
+          <th>StreamVC</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <audio controls>
+              <source src="./static/wav/source1.wav" type="audio/wav">
+            </audio>
+          </td>
+          <td>
+            <audio controls>
+              <source src="./static/wav/output_audio.wav" type="audio/wav">
+            </audio>
+          </td>
+          <td>
+            <audio controls>
+              <source src="./static/wav/streamvc1.wav" type="audio/wav">
+            </audio>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <audio controls>
+              <source src="./static/wav/source2.wav" type="audio/wav">
+            </audio>
+          </td>
+          <td>
+            <audio controls>
+              <source src="./static/wav/output_audio2.wav" type="audio/wav">
+            </audio>
+          </td>
+          <td>
+            <audio controls>
+              <source src="./static/wav/streamvc2.wav" type="audio/wav">
+            </audio>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <audio controls>
+              <source src="./static/wav/source3.wav" type="audio/wav">
+            </audio>
+          </td>
+          <td>
+            <audio controls>
+              <source src="./static/wav/output_audio3.wav" type="audio/wav">
+            </audio>
+          </td>
+          <td>
+            <audio controls>
+              <source src="./static/wav/streamvc3.wav" type="audio/wav">
+            </audio>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3">Parameter Efficiency</h2>
+    <p></p>
+    <p class="subtitle is-5">Voice conversion results under different input SNR values.</p>
+    <p></p>
+    <!-- 10dB SNR -->
+    <h3 class="title is-4">10dB SNR</h3>
+    <table class="table is-fullwidth is-striped">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Sample 1</th>
+          <th>Sample 2</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>DDSP</strong></td>
+          <td><audio controls><source src="./static/wav/ddsp_10db_1.wav" type="audio/wav"></audio></td>
+          <td><audio controls><source src="./static/wav/ddsp_10db_2.wav" type="audio/wav"></audio></td>
+        </tr>
+        <tr>
+          <td><strong>comparison</strong></td>
+          <td><audio controls><source src="./static/wav/hificar_10db_1.wav" type="audio/wav"></audio></td>
+          <td><audio controls><source src="./static/wav/hificar_10db_2.wav" type="audio/wav"></audio></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- 20dB SNR -->
+    <h3 class="title is-4">20dB SNR</h3>
+    <table class="table is-fullwidth is-striped">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Sample 1</th>
+          <th>Sample 2</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>DDSP</strong></td>
+          <td><audio controls><source src="./static/wav/ddsp_20db_1.wav" type="audio/wav"></audio></td>
+          <td><audio controls><source src="./static/wav/ddsp_20db_2.wav" type="audio/wav"></audio></td>
+        </tr>
+        <tr>
+          <td><strong>comparison</strong></td>
+          <td><audio controls><source src="./static/wav/hificar_20db_1.wav" type="audio/wav"></audio></td>
+          <td><audio controls><source src="./static/wav/hificar_20db_2.wav" type="audio/wav"></audio></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- 30dB SNR -->
+    <h3 class="title is-4">30dB SNR</h3>
+    <table class="table is-fullwidth is-striped">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Sample 1</th>
+          <th>Sample 2</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>DDSP</strong></td>
+          <td><audio controls><source src="./static/wav/ddsp_30db_1.wav" type="audio/wav"></audio></td>
+          <td><audio controls><source src="./static/wav/ddsp_30db_2.wav" type="audio/wav"></audio></td>
+        </tr>
+        <tr>
+          <td><strong>comparison</strong></td>
+          <td><audio controls><source src="./static/wav/hificar_30db_1.wav" type="audio/wav"></audio></td>
+          <td><audio controls><source src="./static/wav/hificar_30db_2.wav" type="audio/wav"></audio></td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</section>
+
 
 
 <section class="section" id="BibTeX">
