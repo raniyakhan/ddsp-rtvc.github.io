@@ -39,7 +39,7 @@
             <span class="author-block">
               <a href="https://louis-liu.notion.site/">Yisi Liu</a>, </span>
             <span class="author-block">
-              <a href="https://www.linkedin.com/in/wcyjohn26/">John Wang</a>, </span>
+              <a href="https://www.linkedin.com/in/wcyjohn26/">Chenyang Wang</a>, </span>
             <span class="author-block">
               <a href="https://www.linkedin.com/in/hanjo2421/">Hanjo Kim</a>, </span>
             <span class="author-block">
@@ -59,21 +59,12 @@
             <div class="publication-links">
               <!-- PDF Link. -->
               <span class="link-block">
-                <a href="https://arxiv.org/pdf/2011.12948"
+                <a href="https://raniyakhan.github.io/ddsp-rtvc.github.io/"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fas fa-file-pdf"></i>
                   </span>
                   <span>Paper</span>
-                </a>
-              </span>
-              <span class="link-block">
-                <a href="https://arxiv.org/abs/2011.12948"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="ai ai-arxiv"></i>
-                  </span>
-                  <span>arXiv</span>
                 </a>
               </span>
                       <!-- web demo -->
@@ -88,7 +79,7 @@
                       </span>
               <!-- Video Link. -->
               <span class="link-block">
-                <a href="https://www.youtube.com/watch?v=MrKrnHhk8IA"
+                <a href="https://raniyakhan.github.io/ddsp-rtvc.github.io/"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fab fa-youtube"></i>
@@ -98,7 +89,7 @@
               </span>
               <!-- Code Link. -->
               <span class="link-block">
-                <a href="https://github.com/google/nerfies"
+                <a href="https://raniyakhan.github.io/ddsp-rtvc.github.io/"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fab fa-github"></i>
@@ -117,6 +108,12 @@
   </div>
 </section>
 
+<div style="text-align: center; margin: 20px 0;">
+  <img src="./static/images/overview_cropped.png" alt="System Overview Diagram" style="width: 80%; height: auto; margin: 10px 0;">
+</div>
+
+
+
 
 <section class="section">
   <div class="container is-max-desktop">
@@ -126,8 +123,7 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Streaming voice conversion has emerged as a pivotal technology in numerous applications ranging from assistive communication to entertainment. In this paper, we present RT-VC, a zero-shot real-time voice conversion system that delivers ultra-low latency and high-quality performance. Our approach leverages an articulatory feature space to naturally disentangle content and speaker characteristics, facilitating more robust and interpretable voice transformations. Additionally, the integration of differentiable digital signal processing (DDSP) enables efficient vocoding directly from articulatory features, significantly reducing conversion latency. Experimental evaluations demonstrate that, while maintaining synthesis quality comparable to the current state-of-the-art (SOTA) method, RT-VC achieves a CPU latency of TODO ms, representing a TODO% reduction in latency. Code and audio samples are available at: TODO. 
-          </p>
+            Streaming voice conversion has emerged as a pivotal technology in numerous applications ranging from assistive communication to entertainment. In this paper, we present RT-VC, a zero-shot real-time voice conversion system that delivers ultra-low latency and high-quality performance. Our approach leverages an articulatory feature space to naturally disentangle content and speaker characteristics, facilitating more robust and interpretable voice transformations. Additionally, the integration of differentiable digital signal processing (DDSP) enables efficient vocoding directly from articulatory features, significantly reducing conversion latency. Experimental evaluations demonstrate that, while maintaining synthesis quality comparable to the current state-of-the-art (SOTA) method, RT-VC achieves a CPU latency of 61.4 ms, representing a 13.3% reduction in latency.          </p>
         </div>
       </div>
     </div>
@@ -137,14 +133,116 @@
 <section class="section">
   <div class="container is-max-desktop">
     <h2 class="title is-3">Conversion Quality</h2>
-    <p class="subtitle is-5">Comparing our conversion quality to StreamVC.</p>
+    <p class="subtitle is-5">
+      Zero-shot voice conversion results. StreamVC samples copied from 
+      <a href="https://google-research.github.io/seanet/stream_vc/" target="_blank">here</a>.
+    </p>
+    
+    <style>
+      .styled-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 40px 0;
+        font-family: sans-serif;
+        font-size: 14px;
+      }
+    
+      .styled-table caption {
+        caption-side: bottom;
+        padding-top: 8px;
+        font-style: italic;
+      }
+    
+      .styled-table th,
+      .styled-table td {
+        border: 1px solid #ccc;
+        padding: 10px 12px;
+        text-align: center;
+      }
+    
+      .styled-table th[rowspan],
+      .styled-table td[rowspan] {
+        vertical-align: middle;
+      }
+    
+      .styled-table th {
+        background-color: #f2f2f2;
+      }
+    
+      .styled-table td:first-child,
+      .styled-table th:first-child {
+        text-align: left;
+      }
+    </style>
+    
+    <table class="styled-table">
+      <caption>
+        Evaluation results of RT-VC in comparison with StreamVC. Values with ± indicate the 95% confidence interval.
+      </caption>
+      <thead>
+        <tr>
+          <th rowspan="2">Model Name</th>
+          <th colspan="2">Naturalness</th>
+          <th colspan="2">Intelligibility</th>
+          <th colspan="2">Speaker Similarity</th>
+          <th>f₀ Consistency</th>
+          <th>CPU</th>
+        </tr>
+        <tr>
+          <th>UTMOS ↑</th>
+          <th>MOS ↑</th>
+          <th>WER ↓</th>
+          <th>CER ↓</th>
+          <th>Resemblyzer Score ↑</th>
+          <th>SMOS ↑</th>
+          <th>f₀ PCC ↑</th>
+          <th>Latency ↓</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Source (LibriTTS)</strong></td>
+          <td>4.03 ± 0.04</td>
+          <td>4.13 ± 0.16</td>
+          <td>5.06%</td>
+          <td>1.36%</td>
+          <td>-</td>
+          <td>-</td>
+          <td>-</td>
+          <td>-</td>
+        </tr>
+        <tr>
+          <td><strong>StreamVC</strong></td>
+          <td>-</td>
+          <td>-</td>
+          <td><strong>6.22%</strong></td>
+          <td>2.17%</td>
+          <td><strong>77.81%</strong></td>
+          <td>-</td>
+          <td>0.842</td>
+          <td>70.8ms</td>
+        </tr>
+        <tr>
+          <td><strong>RT-VC</strong></td>
+          <td>3.81 ± 0.02</td>
+          <td>3.87 ± 0.17</td>
+          <td>6.69%</td>
+          <td><strong>2.12%</strong></td>
+          <td>76.65%</td>
+          <td>3.59 ± 0.19</td>
+          <td><strong>0.865</strong></td>
+          <td><strong>61.4ms</strong></td>
+        </tr>
+      </tbody>
+    </table>
+    
 
     <div class="table-container" style="overflow-x: auto;">
-      <table class="table is-fullwidth is-striped is-hoverable">
+      <table class="table is-fullwidth is-striped is-hoverable has-text-centered">
         <thead>
           <tr>
-            <th >Source</th>
-            <th>Target</th>
+            <th >Source (Unseen)</th>
+            <th>Target (Unseen)</th>
             <th>StreamVC</th>
             <th>RT-VC (Our Model)</th>
           </tr>
@@ -304,6 +402,28 @@
               </audio>
             </td>
           </tr>
+          <tr>
+            <td>
+              <audio controls style="width: 150px;">
+                <source src="./static/audio/conversion_compare/1_to_p362/source.wav" type="audio/wav">
+              </audio>
+            </td>
+            <td>
+              <audio controls style="width: 150px;">
+                <source src="./static/audio/conversion_compare/1_to_p362/target.flac" type="audio/wav">
+              </audio>
+            </td>
+            <td>
+              <audio controls style="width: 150px;">
+                <source src="./static/audio/conversion_compare/1_to_p362/streamvc.wav" type="audio/wav">
+              </audio>
+            </td>
+            <td>
+              <audio controls style="width: 150px;">
+                <source src="./static/audio/conversion_compare/1_to_p362/rt-vc.wav" type="audio/wav">
+              </audio>
+            </td>
+          </tr>
         </tbody>
       </table>
     </div>
@@ -315,15 +435,15 @@
   <div class="container is-max-desktop">
     <h2 class="title is-3">Noise Robustness</h2>
     <p></p>
-    <p class="subtitle is-5">Voice conversion results under different input SNR values.</p>
+    <p class="subtitle is-5">Voice conversion results under different input SNR (white noise).</p>
     <p></p>
     <!-- 40dB SNR -->
     <h3 class="title is-4">40dB SNR</h3>
-    <table class="table is-fullwidth is-striped">
+    <table class="table is-fullwidth is-striped has-text-centered">
       <thead>
         <tr>
-          <th>Source</th>
-          <th>Target</th>
+          <th>Source (Unseen)</th>
+          <th>Target (Unseen)</th>
           <th>RT-VC (Our Model)</th>
         </tr>
       </thead>
@@ -343,95 +463,96 @@
 
     <!-- 30dB SNR -->
     <h3 class="title is-4">30dB SNR</h3>
-    <table class="table is-fullwidth is-striped">
+    <table class="table is-fullwidth is-striped has-text-centered">
       <thead>
         <tr>
-          <th>Source</th>
-          <th>Target</th>
+          <th>Source (Unseen)</th>
+          <th>Target (Unseen)</th>
           <th>RT-VC (Our Model)</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td><audio controls><source src="./static/wav/source_30db.wav" type="audio/wav"></audio></td>
-          <td><audio controls><source src="./static/wav/target_30db.wav" type="audio/wav"></audio></td>
-          <td><audio controls><source src="./static/wav/rtvc_30db.wav" type="audio/wav"></audio></td>
+          <td><audio controls><source src="./static/audio/noise_robustness/30dB/1089_134686_000002_000001.wav" type="audio/wav"></audio></td>
+          <td><audio controls><source src="./static/audio/noise_robustness/target/p231_254_mic1_16k.flac" type="audio/wav"></audio></td>
+          <td><audio controls><source src="./static/audio/noise_robustness/30dB/1089_134686_000002_000001_to_p231_target.wav" type="audio/wav"></audio></td>
+        </tr>
+        <tr>
+          <td><audio controls><source src="./static/audio/noise_robustness/30dB/1580_141083_000006_000000.wav" type="audio/wav"></audio></td>
+          <td><audio controls><source src="./static/audio/noise_robustness/target/p334_016_mic1_16k.flac" type="audio/wav"></audio></td>
+          <td><audio controls><source src="./static/audio/noise_robustness/30dB/1580_141083_000006_000000_to_p334_target.wav" type="audio/wav"></audio></td>
         </tr>
       </tbody>
     </table>
 
     <!-- 20dB SNR -->
     <h3 class="title is-4">20dB SNR</h3>
-    <table class="table is-fullwidth is-striped">
+    <table class="table is-fullwidth is-striped has-text-centered">
       <thead>
         <tr>
-          <th>Source</th>
-          <th>Target</th>
+          <th>Source (Unseen)</th>
+          <th>Target (Unseen)</th>
           <th>RT-VC (Our Model)</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td><audio controls><source src="./static/wav/source_20db.wav" type="audio/wav"></audio></td>
-          <td><audio controls><source src="./static/wav/target_20db.wav" type="audio/wav"></audio></td>
-          <td><audio controls><source src="./static/wav/rtvc_20db.wav" type="audio/wav"></audio></td>
+          <td><audio controls><source src="./static/audio/noise_robustness/20dB/1089_134686_000002_000001.wav" type="audio/wav"></audio></td>
+          <td><audio controls><source src="./static/audio/noise_robustness/target/p231_254_mic1_16k.flac" type="audio/wav"></audio></td>
+          <td><audio controls><source src="./static/audio/noise_robustness/20dB/1089_134686_000002_000001_to_p231_target.wav" type="audio/wav"></audio></td>
+        </tr>
+        <tr>
+          <td><audio controls><source src="./static/audio/noise_robustness/20dB/1580_141083_000006_000000.wav" type="audio/wav"></audio></td>
+          <td><audio controls><source src="./static/audio/noise_robustness/target/p334_016_mic1_16k.flac" type="audio/wav"></audio></td>
+          <td><audio controls><source src="./static/audio/noise_robustness/20dB/1580_141083_000006_000000_to_p334_target.wav" type="audio/wav"></audio></td>
         </tr>
       </tbody>
     </table>
 
     <!-- 10dB SNR -->
     <h3 class="title is-4">10dB SNR</h3>
-    <table class="table is-fullwidth is-striped">
+    <table class="table is-fullwidth is-striped has-text-centered">
       <thead>
         <tr>
-          <th>Source</th>
-          <th>Target</th>
+          <th>Source (Unseen)</th>
+          <th>Target (Unseen)</th>
           <th>RT-VC (Our Model)</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td><audio controls><source src="./static/wav/source_10db.wav" type="audio/wav"></audio></td>
-          <td><audio controls><source src="./static/wav/target_10db.wav" type="audio/wav"></audio></td>
-          <td><audio controls><source src="./static/wav/rtvc_10db.wav" type="audio/wav"></audio></td>
+          <td><audio controls><source src="./static/audio/noise_robustness/10dB/1089_134686_000002_000001.wav" type="audio/wav"></audio></td>
+          <td><audio controls><source src="./static/audio/noise_robustness/target/p231_254_mic1_16k.flac" type="audio/wav"></audio></td>
+          <td><audio controls><source src="./static/audio/noise_robustness/10dB/1089_134686_000002_000001_to_p231_target.wav" type="audio/wav"></audio></td>
+        </tr>
+        <tr>
+          <td><audio controls><source src="./static/audio/noise_robustness/10dB/1580_141083_000006_000000.wav" type="audio/wav"></audio></td>
+          <td><audio controls><source src="./static/audio/noise_robustness/target/p334_016_mic1_16k.flac" type="audio/wav"></audio></td>
+          <td><audio controls><source src="./static/audio/noise_robustness/10dB/1580_141083_000006_000000_to_p334_target.wav" type="audio/wav"></audio></td>
         </tr>
       </tbody>
     </table>
 
     <!-- 5dB SNR -->
     <h3 class="title is-4">5dB SNR</h3>
-    <table class="table is-fullwidth is-striped">
+    <table class="table is-fullwidth is-striped has-text-centered">
       <thead>
         <tr>
-          <th>Source</th>
-          <th>Target</th>
+          <th>Source (Unseen)</th>
+          <th>Target (Unseen)</th>
           <th>RT-VC (Our Model)</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td><audio controls><source src="./static/wav/source_5db.wav" type="audio/wav"></audio></td>
-          <td><audio controls><source src="./static/wav/target_5db.wav" type="audio/wav"></audio></td>
-          <td><audio controls><source src="./static/wav/rtvc_5db.wav" type="audio/wav"></audio></td>
+          <td><audio controls><source src="./static/audio/noise_robustness/5dB/1089_134686_000002_000001.wav" type="audio/wav"></audio></td>
+          <td><audio controls><source src="./static/audio/noise_robustness/target/p231_254_mic1_16k.flac" type="audio/wav"></audio></td>
+          <td><audio controls><source src="./static/audio/noise_robustness/5dB/1089_134686_000002_000001_to_p231_target.wav" type="audio/wav"></audio></td>
         </tr>
-      </tbody>
-    </table>
-
-    <!-- 0dB SNR -->
-    <h3 class="title is-4">0dB SNR</h3>
-    <table class="table is-fullwidth is-striped">
-      <thead>
         <tr>
-          <th>Source</th>
-          <th>Target</th>
-          <th>RT-VC (Our Model)</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><audio controls><source src="./static/wav/source_0db.wav" type="audio/wav"></audio></td>
-          <td><audio controls><source src="./static/wav/target_0db.wav" type="audio/wav"></audio></td>
-          <td><audio controls><source src="./static/wav/rtvc_0db.wav" type="audio/wav"></audio></td>
+          <td><audio controls><source src="./static/audio/noise_robustness/5dB/1580_141083_000006_000000.wav" type="audio/wav"></audio></td>
+          <td><audio controls><source src="./static/audio/noise_robustness/target/p334_016_mic1_16k.flac" type="audio/wav"></audio></td>
+          <td><audio controls><source src="./static/audio/noise_robustness/5dB/1580_141083_000006_000000_to_p334_target.wav" type="audio/wav"></audio></td>
         </tr>
       </tbody>
     </table>
@@ -441,9 +562,166 @@
 </section>
 
 
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3">(Bonus) Multilingual Conversion</h2>
+    <p></p>
+    <p class="subtitle is-5">Voice conversion results under different input SNR (white noise).</p>
+    <p></p>
+    <!-- Chinese -->
+    <h3 class="title is-4">Chinese</h3>
+    <table class="table is-fullwidth is-striped has-text-centered">
+      <thead>
+        <tr>
+          <th>Source (Unseen)</th>
+          <th>Target (Unseen)</th>
+          <th>RT-VC (Our Model)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><audio controls><source src="./static/audio/multilingual_conversion/Chinese/source.wav" type="audio/wav"></audio></td>
+          <td><audio controls><source src="./static/audio/multilingual_conversion/Chinese/target.wav" type="audio/wav"></audio></td>
+          <td><audio controls><source src="./static/audio/multilingual_conversion/Chinese/converted.wav" type="audio/wav"></audio></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- 30dB SNR -->
+    <h3 class="title is-4">French</h3>
+    <table class="table is-fullwidth is-striped has-text-centered">
+      <thead>
+        <tr>
+          <th>Source (Unseen)</th>
+          <th>Target (Unseen)</th>
+          <th>RT-VC (Our Model)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><audio controls><source src="./static/audio/multilingual_conversion/French/source.wav" type="audio/wav"></audio></td>
+          <td><audio controls><source src="./static/audio/multilingual_conversion/French/target.wav" type="audio/wav"></audio></td>
+          <td><audio controls><source src="./static/audio/multilingual_conversion/French/converted.wav" type="audio/wav"></audio></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- 20dB SNR -->
+    <h3 class="title is-4">German</h3>
+    <table class="table is-fullwidth is-striped has-text-centered">
+      <thead>
+        <tr>
+          <th>Source (Unseen)</th>
+          <th>Target (Unseen)</th>
+          <th>RT-VC (Our Model)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><audio controls><source src="./static/audio/multilingual_conversion/German/source.wav" type="audio/wav"></audio></td>
+          <td><audio controls><source src="./static/audio/multilingual_conversion/German/target.wav" type="audio/wav"></audio></td>
+          <td><audio controls><source src="./static/audio/multilingual_conversion/German/converted.wav" type="audio/wav"></audio></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- 10dB SNR -->
+    <h3 class="title is-4">Spanish</h3>
+    <table class="table is-fullwidth is-striped has-text-centered">
+      <thead>
+        <tr>
+          <th>Source (Unseen)</th>
+          <th>Target (Unseen)</th>
+          <th>RT-VC (Our Model)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><audio controls><source src="./static/audio/multilingual_conversion/Spanish/source.wav" type="audio/wav"></audio></td>
+          <td><audio controls><source src="./static/audio/multilingual_conversion/Spanish/target.wav" type="audio/wav"></audio></td>
+          <td><audio controls><source src="./static/audio/multilingual_conversion/Spanish/converted.wav" type="audio/wav"></audio></td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3">(Bonus) Singing Voice Conversion</h2>
+
+    <table class="table is-fullwidth is-striped has-text-centered">
+      <thead>
+        <tr>
+          <th>Source (Unseen)</th>
+          <th>Target (Unseen)</th>
+          <th>RT-VC</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <audio controls>
+              <source src="./static/audio/singing_voice_conversion/pair1/source.wav" type="audio/wav">
+            </audio>
+          </td>
+          <td>
+            <audio controls>
+              <source src="./static/audio/singing_voice_conversion/pair1/target.wav" type="audio/wav">
+            </audio>
+          </td>
+          <td>
+            <audio controls>
+              <source src="./static/audio/singing_voice_conversion/pair1/converted.wav" type="audio/wav">
+            </audio>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <audio controls>
+              <source src="./static/audio/singing_voice_conversion/pair2/source.wav" type="audio/wav">
+            </audio>
+          </td>
+          <td>
+            <audio controls>
+              <source src="./static/audio/singing_voice_conversion/pair2/target.wav" type="audio/wav">
+            </audio>
+          </td>
+          <td>
+            <audio controls>
+              <source src="./static/audio/singing_voice_conversion/pair2/converted.wav" type="audio/wav">
+            </audio>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <audio controls>
+              <source src="./static/audio/singing_voice_conversion/pair3/source.wav" type="audio/wav">
+            </audio>
+          </td>
+          <td>
+            <audio controls>
+              <source src="./static/audio/singing_voice_conversion/pair3/target.wav" type="audio/wav">
+            </audio>
+          </td>
+          <td>
+            <audio controls>
+              <source src="./static/audio/singing_voice_conversion/pair3/converted.wav" type="audio/wav">
+            </audio>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
 
 
-<section class="section" id="BibTeX">
+
+
+
+<!-- <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
     <h2 class="title">BibTeX</h2>
     <pre><code>@article{park2021nerfies,
@@ -453,12 +731,12 @@
   year      = {2021},
 }</code></pre>
   </div>
-</section>
+</section> -->
 
 
 <footer class="footer">
   <div class="container">
-    <div class="content has-text-centered">
+    <!-- <div class="content has-text-centered">
       <a class="icon-link"
          href="./static/videos/nerfies_paper.pdf">
         <i class="fas fa-file-pdf"></i>
@@ -466,7 +744,7 @@
       <a class="icon-link" href="https://github.com/keunhong" class="external-link" disabled>
         <i class="fab fa-github"></i>
       </a>
-    </div>
+    </div> -->
     <div class="columns is-centered">
       <div class="column is-8">
         <div class="content has-text-centered"> <!-- Added has-text-centered here -->
